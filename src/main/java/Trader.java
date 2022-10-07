@@ -39,9 +39,17 @@ public class Trader<T> {
      *       representing the Trader's money. Give the Trader
      *       empty ArrayLists for their inventory and wishlist.
      */
+    public Trader(int money){
+        this.inventory = new ArrayList<T>();
+        this.wishlist = new ArrayList<T>();
+        this.money = money;
+
+    }
 
 
-
+    public void addToWishlist(T thing){
+        this.wishlist.add(thing);
+    }
 
 
     /* TODO: Implement the method addToWishlist that takes an
@@ -49,7 +57,14 @@ public class Trader<T> {
      */
 
 
-
+    public int getSellingPrice(T thing){
+        if (thing instanceof Tradable){
+            return ((Tradable) thing).getPrice();
+        }
+        else{
+            return Tradable.MISSING_PRICE;
+        }
+    }
 
 
     /* TODO: Implement the method getSellingPrice that takes an
